@@ -1,0 +1,32 @@
+============================= test session starts ==============================
+platform linux -- Python 3.14.6, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 3 items
+
+../tests/test_outputs.py ..F                                             [100%]
+
+=================================== FAILURES ===================================
+_________________________ test_output_format_is_valid __________________________
+
+    def test_output_format_is_valid():
+        """The report.json format matches the instructions."""
+        with open('/app/report.json', 'r') as f:
+            report = json.load(f)
+    
+        expected_keys = {"total_requests", "clients", "page_popularity"}
+>       assert expected_keys.issubset(report.keys()), "missing valid report keys"
+E       AssertionError: missing valid report keys
+E       assert False
+E        +  where False = <built-in method issubset of set object at 0x7509a8a7ec00>(dict_keys(['total_requests', 'unique_ips', 'top_path']))
+E        +    where <built-in method issubset of set object at 0x7509a8a7ec00> = {'clients', 'page_popularity', 'total_requests'}.issubset
+E        +    and   dict_keys(['total_requests', 'unique_ips', 'top_path']) = <built-in method keys of dict object at 0x7509a894a940>()
+E        +      where <built-in method keys of dict object at 0x7509a894a940> = {'top_path': '/index.html', 'total_requests': 6, 'unique_ips': 3}.keys
+
+/tests/test_outputs.py:19: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../tests/test_outputs.py::test_report_exists
+PASSED ../tests/test_outputs.py::test_report_nonempty
+FAILED ../tests/test_outputs.py::test_output_format_is_valid - AssertionError...
+========================= 1 failed, 2 passed in 0.02s ==========================

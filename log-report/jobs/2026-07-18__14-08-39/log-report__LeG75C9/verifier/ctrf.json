@@ -1,0 +1,50 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 2,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1784398125.102675,
+            "stop": 1784398125.123664
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_report_exists",
+                "status": "passed",
+                "duration": 0.0003485099950921722,
+                "start": 1784398125.115168,
+                "stop": 1784398125.115696,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_report_nonempty",
+                "status": "passed",
+                "duration": 0.00024611300614196807,
+                "start": 1784398125.1158426,
+                "stop": 1784398125.1161895,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_output_format_is_valid",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.00040654800250194967,
+                "start": 1784398125.1163087,
+                "stop": 1784398125.1235409,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "def test_output_format_is_valid():\n        \"\"\"The report.json format matches the instructions.\"\"\"\n        with open('/app/report.json', 'r') as f:\n            report = json.load(f)\n    \n        \"\"\"Assert the instructed keys are present in the report file.\"\"\"\n        assert \"total_requests\" in report\n>       assert \"clients\" in report\nE       AssertionError: assert 'clients' in {'top_path': '/index.html', 'total_requests': 6, 'unique_ips': 3}\n\n/tests/test_outputs.py:20: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

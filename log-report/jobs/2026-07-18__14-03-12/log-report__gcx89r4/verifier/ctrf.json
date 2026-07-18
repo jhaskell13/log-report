@@ -1,0 +1,50 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 2,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1784397799.2714233,
+            "stop": 1784397799.295255
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_report_exists",
+                "status": "passed",
+                "duration": 0.00037950499245198444,
+                "start": 1784397799.2857985,
+                "stop": 1784397799.2863712,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_report_nonempty",
+                "status": "passed",
+                "duration": 0.00025383899628650397,
+                "start": 1784397799.2865198,
+                "stop": 1784397799.2868814,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_output_format_is_valid",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0004637689999071881,
+                "start": 1784397799.287047,
+                "stop": 1784397799.2949567,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "def test_output_format_is_valid():\n        \"\"\"The report.json format matches the instructions.\"\"\"\n        with open('/app/report.json', 'r') as f:\n            report = json.load(f)\n    \n        expected_keys = {\"total_requests\", \"clients\", \"page_popularity\"}\n>       assert expected_keys.issubset(report.keys()), \"missing valid report keys\"\nE       AssertionError: missing valid report keys\nE       assert False\nE        +  where False = <built-in method issubset of set object at 0x7509a8a7ec00>(dict_keys(['total_requests', 'unique_ips', 'top_path']))\nE        +    where <built-in method issubset of set object at 0x7509a8a7ec00> = {'clients', 'page_popularity', 'total_requests'}.issubset\nE        +    and   dict_keys(['total_requests', 'unique_ips', 'top_path']) = <built-in method keys of dict object at 0x7509a894a940>()\nE        +      where <built-in method keys of dict object at 0x7509a894a940> = {'top_path': '/index.html', 'total_requests': 6, 'unique_ips': 3}.keys\n\n/tests/test_outputs.py:19: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}
