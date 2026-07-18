@@ -1,0 +1,23 @@
+Skipping image OS validation for hb__466844872d774772deb8b33d3485ac17: docker inspect returned 1
+Collecting main service artifacts
+Failed to download artifact '/app/report.json' from service 'main' (best-effort)
+Traceback (most recent call last):
+  File "/home/jhask/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/trial/artifact_handler.py", line 330, in _download_artifact
+    await source_env.service_download_file(
+    ...<3 lines>...
+    )
+  File "/home/jhask/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/environments/docker/docker.py", line 1025, in service_download_file
+    await self.download_file(source_path, target_path)
+  File "/home/jhask/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/environments/docker/docker.py", line 1010, in download_file
+    await self._platform.download_file(source_path, target_path)
+  File "/home/jhask/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/environments/docker/docker_unix.py", line 185, in download_file
+    await self._env._run_docker_compose_command(
+    ...<2 lines>...
+    )
+  File "/home/jhask/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/environments/docker/docker.py", line 631, in _run_docker_compose_command
+    raise RuntimeError(
+    ...<5 lines>...
+    )
+RuntimeError: Docker compose command failed for environment log-report. Command: docker compose --project-name log-report__r2p7gwu__env --project-directory /home/jhask/fix-task-broken/log-report/environment -f /tmp/tmpp4v20uva/log-report__R2p7gWu__env-docker-compose-resources.json -f /home/jhask/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/environments/docker/docker-compose-build.yaml -f /tmp/tmpbccqzl0s/docker-compose-mounts.json cp main:/app/report.json jobs/2026-07-18__15-09-57/log-report__R2p7gWu/artifacts/app/report.json. Return code: 1. Stdout:  log-report__r2p7gwu__env-main-1 Copying log-report__r2p7gwu__env-main-1:/app/report.json to jobs/2026-07-18__15-09-57/log-report__R2p7gWu/artifacts/app/report.json
+Error response from daemon: Could not find the file /app/report.json in container a38c46ee78f7e31dc0fad09e3704f7ffb3a7a1652010b88c1310cc40c4d31c1b
+. Stderr: None. 
